@@ -7,6 +7,8 @@ import com.example.greenenergy.repository.ContentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ArticleService {
     @Autowired
@@ -17,10 +19,10 @@ public class ArticleService {
 
     public String getArticleById(int id)
     {
-        Article article=articleRepository.getReferenceById(id);
-        if(article!=null)
+       Optional<Article> articleOptional = Optional.of(articleRepository.getReferenceById(id));
+        if(articleOptional.isPresent())
         {
-            Content content=article.articleContent;
+            Content content=articleOptional.get().articleContent;
             if(content!=null)
             {
         return(content.getArticleContent());}

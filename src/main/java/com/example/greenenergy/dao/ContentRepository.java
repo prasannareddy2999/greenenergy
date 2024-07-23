@@ -1,4 +1,4 @@
-package com.example.greenenergy.repository;
+package com.example.greenenergy.dao;
 
 import com.example.greenenergy.entity.Content;
 import org.springframework.data.jpa.repository.JpaRepository;

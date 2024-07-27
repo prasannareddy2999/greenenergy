@@ -2,12 +2,23 @@ package com.example.greenenergy.entity;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Content {
+    public Long getContentId() {
+        return contentId;
+    }
+
+    public void setContentId(Long contentId) {
+        this.contentId = contentId;
+    }
+
     @Id
-    int contentId;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    Long contentId;
 
     public String getArticleContent() {
         return articleContent;

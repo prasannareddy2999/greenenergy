@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Article {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    public int articleId;
+    public Long articleId;
 
     public String getArticleTitle() {
         return articleTitle;
@@ -27,14 +27,15 @@ public class Article {
         this.articleContent = articleContent;
     }
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "content_id", referencedColumnName = "contentId")
     public Content articleContent;
 
-    public int getArticleId() {
+    public Long getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(int articleId) {
+    public void setArticleId(Long articleId) {
         this.articleId = articleId;
     }
 
